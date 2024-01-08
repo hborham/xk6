@@ -69,6 +69,9 @@ func (b Builder) Build(ctx context.Context, outputFile string) error {
 	if b.ARM == "" {
 		b.ARM = os.Getenv("GOARM")
 	}
+	if b.Goprivate == "" {
+		b.Goprivate = os.Getenv("GOPRIVATE")
+	}
 
 	// prepare the build environment
 	buildEnv, err := b.newEnvironment(ctx)
@@ -84,6 +87,7 @@ func (b Builder) Build(ctx context.Context, outputFile string) error {
 	env = setEnv(env, "GOOS="+b.OS)
 	env = setEnv(env, "GOARCH="+b.Arch)
 	env = setEnv(env, "GOARM="+b.ARM)
+	env = setEnv(env, "GOPRIVATE="+b.Goprivate)
 
 	raceArg := "-race"
 

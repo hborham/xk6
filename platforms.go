@@ -8,7 +8,8 @@ import (
 // Compile contains parameters for compilation.
 type Compile struct {
 	Platform
-	Cgo bool `json:"cgo,omitempty"`
+	Cgo       bool   `json:"cgo,omitempty"`
+	Goprivate string `json:"goprivate,omitempty"`
 }
 
 // CgoEnabled returns "1" if c.Cgo is true, "0" otherwise.
