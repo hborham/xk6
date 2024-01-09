@@ -71,6 +71,7 @@ func (b Builder) Build(ctx context.Context, outputFile string) error {
 	}
 	if b.Goprivate == "" {
 		b.Goprivate = os.Getenv("GOPRIVATE")
+		log.Printf("[INFO] set k6 GOPRIVATE = %s\n", b.Goprivate)
 	}
 
 	// prepare the build environment
